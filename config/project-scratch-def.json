@@ -1,13 +1,42 @@
 {
-  "orgName": "my company",
-  "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
-  "settings": {
-    "lightningExperienceSettings": {
-      "enableS1DesktopEnabled": true
-    },
-    "mobileSettings": {
-      "enableS1EncryptedStoragePref2": false
-    }
-  }
+	"orgName": "Launchpad ETPL Development",
+	"edition": "Developer",
+	"features": ["EnableSetPasswordInApi", "ContactsToMultipleAccounts"],
+	"settings": {
+		"accountSettings": {
+			"enableContactHistoryTracking": true,
+			"enableAccountHistoryTracking": true,
+			"enableRelateContactToMultipleAccounts": true,
+			"enableAccountTeams": true
+		},
+		"lightningExperienceSettings": {
+			"enableS1DesktopEnabled": true
+		},
+		"mobileSettings": {
+			"enableS1EncryptedStoragePref2": false
+		},
+		"userManagementSettings": {
+			"enableNewProfileUI": true,
+			"enableEnhancedPermsetMgmt": true,
+			"enableEnhancedProfileMgmt": true
+		},
+		"communitiesSettings": {
+			"enableNetworksEnabled": true,
+			"enableOotbProfExtUserOpsEnable": true,
+			"enablePRMAccRelPref": true
+		},
+		"enhancedNotesSettings": {
+			"enableEnhancedNotes": true,
+			"enableTasksOnEnhancedNotes": true
+		},
+		"emailTemplateSettings": {
+			"enableTemplateEnhancedFolderPref": true
+		},
+		"emailAdministrationSettings": {
+			"enableEmailToSalesforce": true
+		},
+		"ExperienceBundleSettings": {
+			"enableExperienceBundleMetadata": true
+		}
+	}
 }
