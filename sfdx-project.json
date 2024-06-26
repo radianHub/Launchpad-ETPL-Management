@@ -5,8 +5,8 @@
       "default": true
     }
   ],
-  "name": "dx-empty",
-  "namespace": "",
+  "name": "LaunchpadETPL",
+  "namespace": "LaunchpadCo",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "55.0"
 }
