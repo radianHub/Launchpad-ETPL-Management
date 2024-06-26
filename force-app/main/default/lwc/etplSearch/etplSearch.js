@@ -1,10 +1,10 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
-//TODO: import getSearchFilterFieldsByObjAPIName from '@salesforce/apex/AdvancedSearchFiltersController.getSearchFilterFieldsByObjAPIName';
+import getSearchFilterFieldsByObjAPIName from '@salesforce/apex/AdvancedSearchFiltersController.getSearchFilterFieldsByObjAPIName';
 
 // * CUSTOM LABELS
-//TODO: import errorTitle from '@salesforce/label/c.PCCommunity_Error_Title';
+import errorTitle from '@salesforce/label/c.ETPLCommunity_Error_Title';
 
 export default class EtplSearch extends LightningElement {
 	// * PUBLIC PROPERTIES
@@ -29,37 +29,37 @@ export default class EtplSearch extends LightningElement {
 
 	// * APEX
 	// # WIRE METHODS
-	// TODO: @wire(getSearchFilterFieldsByObjAPIName, {
-	// 	objectApiName: 'LaunchpadCo__Training_Program__c',
-	// 	fieldSetApiName: '$primaryFilterFieldSetApiName',
-	// })
-	// wiredGetSearchFilterFieldsByObjAPIName(result) {
-	// 	this.loading = true;
-	// 	this.wiredFields = result;
-	// 	const { data, error } = result;
-	// 	if (data) {
-	// 		data.forEach((field) => {
-	// 			let isPicklist = field.fieldType === 'PICKLIST' || field.fieldType === 'MULTIPICKLIST' ? true : false;
-	// 			let notPicklist = !isPicklist;
-	// 			this.fields = {
-	// 				...this.fields,
-	// 				...{
-	// 					[field.fieldApiName]: {
-	// 						...field,
-	// 						type: field.fieldType,
-	// 						isPicklist: isPicklist,
-	// 						notPicklist: notPicklist,
-	// 					},
-	// 				},
-	// 			};
-	// 		});
-	// 		this.loading = false;
-	// 	} else if (error) {
-	// 		this.showNotification(this.label.errorTitle, error.body.message, 'error');
-	// 		console.log('error', error.body.message, 'error');
-	// 		this.loading = false;
-	// 	}
-	// }
+	@wire(getSearchFilterFieldsByObjAPIName, {
+		objectApiName: 'LaunchpadCo__Training_Program__c',
+		fieldSetApiName: '$primaryFilterFieldSetApiName',
+	})
+	wiredGetSearchFilterFieldsByObjAPIName(result) {
+		this.loading = true;
+		this.wiredFields = result;
+		const { data, error } = result;
+		if (data) {
+			data.forEach((field) => {
+				let isPicklist = field.fieldType === 'PICKLIST' || field.fieldType === 'MULTIPICKLIST' ? true : false;
+				let notPicklist = !isPicklist;
+				this.fields = {
+					...this.fields,
+					...{
+						[field.fieldApiName]: {
+							...field,
+							type: field.fieldType,
+							isPicklist: isPicklist,
+							notPicklist: notPicklist,
+						},
+					},
+				};
+			});
+			this.loading = false;
+		} else if (error) {
+			this.showNotification(this.label.errorTitle, error.body.message, 'error');
+			console.log('error', error.body.message, 'error');
+			this.loading = false;
+		}
+	}
 
 	// * HANDLERS
 	handleOnSendRecords(event) {

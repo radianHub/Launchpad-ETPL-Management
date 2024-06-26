@@ -4,7 +4,7 @@ import { ApplyFilterEvent } from './event.js';
 import LightningModal from 'lightning/modal';
 import FORM_FACTOR from '@salesforce/client/formFactor';
 
-// TODO: import getPicklistValuesFromObjFieldApiName from '@salesforce/apex/PCCommunityHelper.getPicklistValuesFromObjFieldApiName';
+import getPicklistValuesFromObjFieldApiName from '@salesforce/apex/ETPLCommunityHelper.getPicklistValuesFromObjFieldApiName';
 
 export default class selectFilterValues extends LightningModal {
 	@api filter;
