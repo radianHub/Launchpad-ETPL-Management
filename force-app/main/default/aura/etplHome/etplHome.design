@@ -1,3 +1,25 @@
-<design:component >
+<design:component>
+	<design:attribute
+		name="header"
+		label="Header"
+		default="Welcome to the Eligible Training Provider Community!" />
+	<design:attribute
+		name="headerColor"
+		label="Header Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="subheaderColor"
+		label="Subheader Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="description"
+		label="Description"
+		default="Find Eligible Training Providers that can launch you to new heights!" />
 
+	<design:attribute
+		name="homeTile"
+		label="Show Tiles"
+		default="true" />
 </design:component>
