@@ -3,10 +3,10 @@ import FORM_FACTOR from '@salesforce/client/formFactor';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { loadStyle } from 'lightning/platformResourceLoader';
 
-// TODO: import getSearchFilterFieldsByObjAPIName from '@salesforce/apex/AdvancedSearchFiltersController.getSearchFilterFieldsByObjAPIName';
+import getSearchFilterFieldsByObjAPIName from '@salesforce/apex/AdvancedSearchFiltersController.getSearchFilterFieldsByObjAPIName';
 
 // * CUSTOM LABELS
-//TODO: import errorTitle from '@salesforce/label/c.PCCommunity_Error_Title';
+import errorTitle from '@salesforce/label/c.ETPLCommunity_Error_Title';
 
 // * CUSTOM MODALS
 import selectFilterValues from 'c/selectFilterValues';
@@ -38,42 +38,42 @@ export default class AdvancedSearchFilters extends LightningElement {
 
 	// * APEX
 	// # WIRE METHODS
-	// TODO: @wire(getSearchFilterFieldsByObjAPIName, {
-	// 	objectApiName: '$objectApiName',
-	// 	fieldSetApiName: '$fieldSetApiName',
-	// })
-	// wiredGetSearchFilterFieldsByObjAPIName(result) {
-	// 	this.loading = true;
-	// 	this.wiredFields = result;
-	// 	const { data, error } = result;
-	// 	if (data) {
-	// 		this.fields = data.map((field) => {
-	// 			let isPicklist = field.fieldType === 'PICKLIST' || field.fieldType === 'MULTIPICKLIST' ? true : false;
-	// 			let notPicklist = !isPicklist;
-	// 			let truncatedLabel =
-	// 				field.fieldLabel.length > 30 ? field.fieldLabel.substring(0, 30) + '...' : field.fieldLabel;
-	// 			return {
-	// 				...field,
-	// 				type: field.fieldType,
-	// 				isPicklist: isPicklist,
-	// 				notPicklist: notPicklist,
-	// 				truncatedBtnLabel: truncatedLabel,
-	// 				selectedValues: [],
-	// 			};
-	// 		});
+	@wire(getSearchFilterFieldsByObjAPIName, {
+		objectApiName: '$objectApiName',
+		fieldSetApiName: '$fieldSetApiName',
+	})
+	wiredGetSearchFilterFieldsByObjAPIName(result) {
+		this.loading = true;
+		this.wiredFields = result;
+		const { data, error } = result;
+		if (data) {
+			this.fields = data.map((field) => {
+				let isPicklist = field.fieldType === 'PICKLIST' || field.fieldType === 'MULTIPICKLIST' ? true : false;
+				let notPicklist = !isPicklist;
+				let truncatedLabel =
+					field.fieldLabel.length > 30 ? field.fieldLabel.substring(0, 30) + '...' : field.fieldLabel;
+				return {
+					...field,
+					type: field.fieldType,
+					isPicklist: isPicklist,
+					notPicklist: notPicklist,
+					truncatedBtnLabel: truncatedLabel,
+					selectedValues: [],
+				};
+			});
 
-	// 		this.dispatchEvent(
-	// 			new SendFieldsEvent({
-	// 				fields: this.fields,
-	// 			})
-	// 		);
-	// 		this.loading = false;
-	// 	} else if (error) {
-	// 		this.showNotification(this.label.errorTitle, error.body.message, 'error');
-	// 		console.log('error', error.body.message, 'error');
-	// 		this.loading = false;
-	// 	}
-	// }
+			this.dispatchEvent(
+				new SendFieldsEvent({
+					fields: this.fields,
+				})
+			);
+			this.loading = false;
+		} else if (error) {
+			this.showNotification(this.label.errorTitle, error.body.message, 'error');
+			console.log('error', error.body.message, 'error');
+			this.loading = false;
+		}
+	}
 
 	// * HANDLERS
 	handleClickPicklist(event) {
