@@ -5,10 +5,10 @@ import FORM_FACTOR from '@salesforce/client/formFactor';
 import { SendRecordsEvent } from './event';
 
 // * APEX IMPORTS
-// TODO: import searchObject from '@salesforce/apex/AdvancedSearchFiltersController.searchObject';
+import searchObject from '@salesforce/apex/AdvancedSearchFiltersController.searchObject';
 
 // * CUSTOM LABELS
-// TODO: import errorTitle from '@salesforce/label/c.PCCommunity_Error_Title';
+import errorTitle from '@salesforce/label/c.ETPLCommunity_Error_Title';
 
 export default class EtplFilter extends LightningElement {
 	@api config;
