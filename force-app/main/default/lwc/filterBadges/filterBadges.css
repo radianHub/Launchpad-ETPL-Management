@@ -1,0 +1,15 @@
+:host {
+	--slds-c-badge-font-size: 0.6rem;
+}
+
+.badge {
+	width: 100px;
+	align-content: center;
+	align-items: center;
+	cursor: pointer;
+	justify-content: center;
+}
+
+.badge:hover {
+	--slds-c-badge-color-background: #f3f3f3;
+}

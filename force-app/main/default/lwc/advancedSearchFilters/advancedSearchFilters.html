@@ -1,0 +1,64 @@
+<template>
+	<div class="slds-is-relative filter">
+		<lightning-spinner
+			lwc:if={isLoading}
+			alternative-text="Loading"
+			size="small"></lightning-spinner>
+	</div>
+	<div class="slds-grid slds-wrap filter align-flex-end flex-jc-sb flex-gap-30 flex-gap-15">
+		<!-- TEMPLATE ITERATES OVER BUTTONS PULLED FROM FIELD SET -->
+		<template
+			lwc:if={finalFields}
+			for:each={finalFields}
+			for:item="field">
+			<div
+				class={buttonCSS}
+				key={field.fieldApiName}>
+				<div
+					lwc:if={field.isPicklist}
+					class="disp-flex flex-ai-c">
+					<lightning-button
+						variant="brand"
+						label={field.truncatedBtnLabel}
+						title={field.fieldLabel}
+						value={field.fieldLabel}
+						data-name={field.fieldApiName}
+						name={field.fieldApiName}
+						data-title={field.fieldLabel}
+						data-type={field.type}
+						data-selected={field.selectedValues}
+						type="button"
+						onclick={handleClickPicklist}
+						icon-name="utility:filterList"
+						stretch="true"
+						icon-position="left"
+						class="flex-grow-1"></lightning-button>
+					<lightning-icon
+						if:true={field.isFilterApplied}
+						icon-name="utility:success"
+						alternative-text="Filter Applied"
+						variant="success"
+						title="Filter Applied"
+						size="small">
+					</lightning-icon>
+				</div>
+				<c-input
+					lwc:else
+					field={field}
+					filter-options-map={filterOptionsMap}
+					name={field.fieldApiName}>
+				</c-input>
+
+				<span
+					class="disp-flex flex-jc-sb padding-bottom-5"
+					lwc:if={field.notPicklist}>
+					<label class="slds-form-element__label"> {field.truncatedBtnLabel} </label>
+					<c-filter-badges
+						field-api-name={field.fieldApiName}
+						field-type={field.type}
+						filter-operator-label-map={filterOperatorLabelMap}></c-filter-badges>
+				</span>
+			</div>
+		</template>
+	</div>
+</template>
