@@ -12,3 +12,6 @@ package.xml
 **/__tests__/**
 
 **Profile
+**Network
+**ExperienceBundle
+**NavigationMenu
