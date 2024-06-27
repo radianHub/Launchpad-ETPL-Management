@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Image_URL__c</field>
-        <value xsi:type="xsd:string">https://agility-site-5864-dev-ed.scratch.my.salesforce.com/servlet/servlet.FileDownload?file=015QL000003ox9h</value>
+        <value xsi:type="xsd:string">https://agility-site-5864-dev-ed.scratch.my.salesforce.com/servlet/servlet.ImageServer?id=015QL000003ox9h&amp;oid=00DQL000004j4wP&amp;lastMod=1719426030000</value>
     </values>
     <values>
         <field>Open_in_New_Tab__c</field>
