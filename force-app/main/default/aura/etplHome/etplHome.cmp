@@ -1,7 +1,6 @@
 <aura:component
 	implements="forceCommunity:availableForAllPageTypes"
 	access="global">
-	<!-- TODO: <ltng:require styles="{!$Resource.MasterAuraStyleSheet}" /> -->
 
 	<aura:attribute
 		name="header"
