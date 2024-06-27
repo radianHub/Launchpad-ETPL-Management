@@ -91,8 +91,8 @@ private class ETPLCommunityHelperTest {
 
 			Test.startTest();
 			List<ETPLCommunityHelper.FieldWrapper> fields = ETPLCommunityHelper.getFieldsByObjectAndFieldSet(
-				'Launchpad__Job__c',
-				'LaunchpadCo__Advanced_Job_Search_Filters'
+				'LaunchpadCo__Training_Program__c',
+				'LaunchpadCo__ETPL_Search'
 			);
 			Test.stopTest();
 
@@ -183,7 +183,7 @@ private class ETPLCommunityHelperTest {
 				MailingState = 'test',
 				MailingPostalCode = '302022',
 				MailingCity = 'test',
-				Launchpad__Created_via_Community_Self_Registration__c = true,
+				Launchpad__Created_via_Community_Self_Registration__c = false,
 				Launchpad__Wage_Desired__c = 20,
 				RecordTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByDeveloperName()
 					.get('Job_Seeker')
