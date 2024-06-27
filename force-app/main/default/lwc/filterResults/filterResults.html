@@ -7,6 +7,7 @@
 	<div lwc:if={recordsToDisplay}>
 		<c-record-data-table
 			lwc:if={isDesktop}
+			class="data-table"
 			object-api-name={objectApiName}
 			field-set-fields={fields}
 			records={recordsToDisplay}
