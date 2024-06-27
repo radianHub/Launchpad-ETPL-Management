@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Image_URL__c</field>
-        <value xsi:type="xsd:string">https://inspiration-fun-6775-dev-ed.scratch.file.force.com/servlet/servlet.ImageServer?id=015Ek000001Xhtg&amp;oid=00DEk000005bImH&amp;lastMod=1713307453000</value>
+        <value xsi:type="xsd:string">https://agility-site-5864-dev-ed.scratch.my.salesforce.com/servlet/servlet.FileDownload?file=015QL000003ox9h</value>
     </values>
     <values>
         <field>Open_in_New_Tab__c</field>
@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>Order__c</field>
-        <value xsi:type="xsd:string">1</value>
+        <value xsi:type="xsd:string">3</value>
     </values>
     <values>
         <field>Redirect_URL__c</field>

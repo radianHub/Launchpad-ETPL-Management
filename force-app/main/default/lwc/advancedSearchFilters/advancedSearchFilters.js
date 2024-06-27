@@ -12,7 +12,7 @@ import errorTitle from '@salesforce/label/c.ETPLCommunity_Error_Title';
 import selectFilterValues from 'c/selectFilterValues';
 
 // * CUSTOM RESOURCES
-// TODO: import css from '@salesforce/resourceUrl/MasterAuraStyleSheet';
+import css from '@salesforce/resourceUrl/MasterAuraStyleSheet';
 
 // * CUSTOM EVENTS
 import { ApplyFilterEvent, SendFieldsEvent } from './event.js';

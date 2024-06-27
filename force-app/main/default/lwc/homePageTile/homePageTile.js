@@ -1,13 +1,13 @@
 import { LightningElement, api } from 'lwc';
 
-export default class pcHomePageTile extends LightningElement {
+export default class homePageTile extends LightningElement {
 	@api tile;
 
 	get imageStyle() {
-		return 'background-image: url("' + this.tile.Launchpad__Image_URL__c + '");';
+		return 'background-image: url("' + this.tile.LaunchpadCo__Image_URL__c + '");';
 	}
 
 	get target() {
-		return this.tile.Launchpad__Open_in_New_Tab__c ? '_blank' : '_self';
+		return this.tile.LaunchpadCo__Open_in_New_Tab__c ? '_blank' : '_self';
 	}
 }

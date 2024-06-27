@@ -1,7 +1,7 @@
 import { LightningElement, track, wire, api } from 'lwc';
 
 // * IMPORTED APEX
-// TODO: import getHomePageTileInfo from '@salesforce/apex/ETPLHomePageController.getHomePageTileInfo';
+import getHomePageTileInfo from '@salesforce/apex/ETPLHomePageController.getHomePageTileInfo';
 
 // * CUSTOM LABELS
 import errorTitle from '@salesforce/label/c.ETPLCommunity_Error_Title';
@@ -13,17 +13,17 @@ export default class EtplHomePage extends LightningElement {
 	@track isLoading = true;
 	@track errorMessage;
 
-	// TODO: @wire(getHomePageTileInfo)
-	// wiredGetHomePageTileInfo({ error, data }) {
-	// 	if (data) {
-	// 		this.homeTiles = data;
-	// 		this.isLoading = false;
-	// 	} else if (error) {
-	// 		console.log(error);
-	// 		this.errorMessage = error.body.message;
-	// 		this.isLoading = false;
-	// 	}
-	// }
+	@wire(getHomePageTileInfo)
+	wiredGetHomePageTileInfo({ error, data }) {
+		if (data) {
+			this.homeTiles = data;
+			this.isLoading = false;
+		} else if (error) {
+			console.log(error);
+			this.errorMessage = error.body.message;
+			this.isLoading = false;
+		}
+	}
 
 	handleErrorClose() {
 		this.errorMessage = undefined;
