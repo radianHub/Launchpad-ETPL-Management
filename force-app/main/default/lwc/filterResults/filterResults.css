@@ -6,6 +6,12 @@
 	font-weight: bold;
 }
 
+.data-table {
+	width: 100%;
+	display: block;
+	overflow-x: scroll;
+}
+
 @media only screen and (max-width: 768px) {
 	/* For mobile phones: */
 	.no-records {
