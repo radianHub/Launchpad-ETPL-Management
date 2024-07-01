@@ -19,6 +19,16 @@ export default class EtplFilter extends LightningElement {
 	filterOptions = {};
 	keyword;
 
+	// ! NEW STUFF
+	handleSendFields(event) {
+        const fields = event.detail.fields;
+		fields.forEach(field => {
+			if (field.isPicklist) {
+				this.filterOptions[field.fieldApiName] = ["INCLUDES"];
+			} 
+		})
+	}
+
 	searchObject() {
 		this.loading = true;
 		searchObject({

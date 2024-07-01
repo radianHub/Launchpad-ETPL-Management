@@ -49,7 +49,7 @@ public with sharing class AdvancedSearchFiltersController {
 
 		// Execute SOQL Query for records
 		List<SObject> soqlQueryResults = Database.query(soqlQuery);
-
+	
 		List<SObject> comprehensiveResultsList = compileReturnedResults(
 			soqlQueryResults,
 			soslQueryResults,
@@ -117,6 +117,12 @@ public with sharing class AdvancedSearchFiltersController {
 		String filterValue = searchValues[1];
 
 		searchValues.remove(0); // Remove the operator from the searchValues list so it does not appear in the Multipicklist and Picklist search list
+		List<String> escapedSearchValues = new List<String>();
+
+		// For each search value, escape single quotes
+		for (String searchValue : searchValues) {
+			escapedSearchValues.add(String.escapeSingleQuotes(searchValue));
+		}
 
 		switch on type {
 			when BOOLEAN, CURRENCY, DATE, DATETIME, DOUBLE, INTEGER, PERCENT, PHONE {
@@ -134,10 +140,10 @@ public with sharing class AdvancedSearchFiltersController {
 				}
 			}
 			when MULTIPICKLIST {
-				return fieldApiName + ' INCLUDES (\'' + String.join(searchValues, '\',\'') + '\')';
+				return fieldApiName + ' INCLUDES (\'' + String.join(escapedSearchValues, '\',\'') + '\')';
 			}
 			when PICKLIST {
-				return fieldApiName + ' IN (\'' + String.join(searchValues, '\',\'') + '\')';
+				return fieldApiName + ' IN (\'' + String.join(escapedSearchValues, '\',\'') + '\')';
 			}
 			when else {
 				throw new DisplayType.DisplayTypeException(type + ' is not a supported display type.');
