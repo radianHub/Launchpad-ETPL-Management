@@ -19,7 +19,6 @@ export default class EtplFilter extends LightningElement {
 	filterOptions = {};
 	keyword;
 
-	// ! NEW STUFF
 	handleSendFields(event) {
         const fields = event.detail.fields;
 		fields.forEach(field => {
@@ -95,22 +94,30 @@ export default class EtplFilter extends LightningElement {
 		let fieldName = event.detail.fieldName;
 		let value = event.detail.value;
 		let inputValue = value[0];
+
+		if(this.isNumeric(inputValue) && this.isNumeric(inputValue.substring(inputValue.length-1, inputValue.length)) && inputValue.substring(inputValue.length-3, inputValue.length-2) != "." && inputValue.substring(inputValue.length-3, inputValue.length-2) != "-") {
+			inputValue += ".00";
+		}
+		
 		let appliedFilter;
 		let operator = this.filterOptions[fieldName][0]; // Operator is always the 0th element
-
+		
 		if (inputValue == '') {
 			appliedFilter = {
 				[fieldName]: [operator],
 			};
 		}
+		
 		// If the value is null, we need to remove the key/value pair from the advanced filters array
 		else if (inputValue !== null && inputValue !== undefined) {
 			appliedFilter = {
-				[fieldName]: [operator, ...value],
+				[fieldName]: [operator, inputValue],
 			};
+			
 		}
 
 		this.filterOptions = { ...this.filterOptions, ...appliedFilter };
+		
 	}
 
 	// * Adds picklist values from advancedSearchFilters
@@ -153,6 +160,11 @@ export default class EtplFilter extends LightningElement {
 				this.filterOptions[key] = [operator];
 			}
 		}
+	}
+
+	//Helper method: determines if the String input is a number
+	isNumeric(n) {
+		return !isNaN(parseFloat(n));
 	}
 
 	// * GETTERS
