@@ -18,6 +18,7 @@ public with sharing class AdvancedSearchFiltersController {
 	// Search an object based on filters passed in as a map of field API name to a list of String values
 	@AuraEnabled
 	public static List<SObject> searchObject(String qualifiedObjApiName, Map<String, List<String>> filterOptionsMap) {
+        
 		Map<String, Schema.SObjectField> objFields = getObjFieldMap(qualifiedObjApiName);
 
 		String soqlQuery =
@@ -30,6 +31,7 @@ public with sharing class AdvancedSearchFiltersController {
 		String soslQuery = generateSoslQuery(qualifiedObjApiName, filterOptionsMap, objFieldsFromFieldSet);
 
 		List<String> whereClause = buildSoqlQueryWhereClauseFilters(objFields, filterOptionsMap);
+        
 		Set<String> clonedObjFieldsFromFieldSet = objFieldsFromFieldSet.clone();
 		clonedObjFieldsFromFieldSet.remove('keyword');
 		soqlQuery = String.format(
@@ -39,22 +41,26 @@ public with sharing class AdvancedSearchFiltersController {
 				whereClause.isEmpty() ? '' : 'WHERE ' + String.join(whereClause, ' AND ')
 			}
 		);
-
+        
 		List<List<SObject>> searchResults;
 		List<SObject> soslQueryResults = new List<SObject>();
+     
 		if (soslQuery != null) {
+            
 			searchResults = Search.query(soslQuery);
+            
 			soslQueryResults = searchResults[0]; // We are only interested in the 0th element of the returned results
 		}
-
+		
 		// Execute SOQL Query for records
 		List<SObject> soqlQueryResults = Database.query(soqlQuery);
-	
+		
 		List<SObject> comprehensiveResultsList = compileReturnedResults(
 			soqlQueryResults,
 			soslQueryResults,
 			filterOptionsMap
 		);
+        
 		return comprehensiveResultsList;
 	}
 
