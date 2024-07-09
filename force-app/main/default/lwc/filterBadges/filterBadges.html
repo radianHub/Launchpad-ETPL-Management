@@ -1,0 +1,44 @@
+<template>
+	<lightning-badge
+		lwc:if={isEquals}
+		label={equalsLabel}
+		class="slds-badge_lightest badge"
+		onclick={handleClickBadge}
+		icon-name="utility:rotate"></lightning-badge>
+	<lightning-badge
+		lwc:elseif={isNotEquals}
+		label={notEqualsLabel}
+		class="slds-badge_lightest badge"
+		onclick={handleClickBadge}
+		icon-name="utility:rotate"></lightning-badge>
+	<lightning-badge
+		lwc:if={isLessThan}
+		label={lessThanLabel}
+		class="slds-badge_lightest badge"
+		onclick={handleClickBadge}
+		icon-name="utility:rotate"></lightning-badge>
+	<lightning-badge
+		lwc:elseif={isLessOrEqual}
+		label={lessOrEqualLabel}
+		class="slds-badge_lightest badge"
+		onclick={handleClickBadge}
+		icon-name="utility:rotate"></lightning-badge>
+	<lightning-badge
+		lwc:elseif={isGreaterThan}
+		label={greaterThanLabel}
+		class="slds-badge_lightest badge"
+		onclick={handleClickBadge}
+		icon-name="utility:rotate"></lightning-badge>
+	<lightning-badge
+		lwc:elseif={isGreaterOrEqual}
+		label={greaterOrEqualLabel}
+		class="slds-badge_lightest badge"
+		onclick={handleClickBadge}
+		icon-name="utility:rotate"></lightning-badge>
+	<lightning-badge
+		lwc:elseif={isLike}
+		label={likeLabel}
+		class="slds-badge_lightest badge"
+		onclick={handleClickBadge}
+		icon-name="utility:rotate"></lightning-badge>
+</template>

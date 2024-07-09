@@ -1,0 +1,24 @@
+.THIS .save button.slds-button_brand {
+	min-height: 42px;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+.THIS h3.slds-accordion__summary-heading button.section-control {
+	display: inline-block !important;
+	font-weight: bold;
+}
+
+.THIS button.section-control lightning-primitive-icon {
+	float: right !important;
+}
+
+.THIS .header {
+	font-weight: 900;
+	font-size: 30px;
+}
+
+.THIS .description {
+	font-weight: 100;
+	font-size: 16px;
+}

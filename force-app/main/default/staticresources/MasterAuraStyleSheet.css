@@ -1,0 +1,7 @@
+c-etpl-filter lightning-input input,
+c-advanced-search-filters lightning-input input,
+c-advanced-search-filters lightning-button button,
+c-etpl-filter lightning-button button {
+    height: 42px;
+    width: 100%;
+}

@@ -1,0 +1,25 @@
+.no-records {
+	font-size: 1.5rem;
+	font-family: 'Open Sans';
+	line-height: 30px;
+	opacity: 100;
+	font-weight: bold;
+}
+
+.data-table {
+	width: 100%;
+	display: block;
+	overflow-x: scroll;
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.no-records {
+		font-size: 1.5rem;
+		font-family: 'Open Sans';
+		line-height: 30px;
+		opacity: 100;
+		font-weight: bold;
+		text-align: center;
+	}
+}

@@ -1,0 +1,37 @@
+<template>
+	<lightning-modal-header
+		label={finalFilter.title}
+		class="header-title"></lightning-modal-header>
+	<lightning-modal-body>
+		<section class="slds-grid slds-wrap">
+			<template
+				if:true={finalFilter.values}
+				for:each={finalFilter.values}
+				for:item="option">
+				<section
+					class={rowCSS}
+					key={option.value}>
+					<div class="option-checkbox">
+						<lightning-input
+							type="checkbox-button"
+							label={option.label}
+							name={option.value}></lightning-input>
+						<span
+							class="option-label"
+							title={option.label}
+							>{option.label}</span
+						>
+					</div>
+				</section>
+			</template>
+		</section>
+	</lightning-modal-body>
+	<lightning-modal-footer>
+		<lightning-button
+			variant="brand"
+			label={buttonLabel}
+			title={buttonLabel}
+			icon-name="utility:filter"
+			onclick={handleApplyFilters}></lightning-button>
+	</lightning-modal-footer>
+</template>

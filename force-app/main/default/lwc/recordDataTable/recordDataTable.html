@@ -1,0 +1,58 @@
+<template>
+	<table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
+		<thead>
+			<tr class="slds-line-height_reset">
+				<template
+					lwc:if={fields}
+					for:each={fields}
+					for:item="field">
+					<th
+						class="table-header"
+						scope="col"
+						key={field.fieldLabel}>
+						<div
+							class="slds-truncate"
+							title={field.fieldLabel}>
+							{field.fieldLabel}
+						</div>
+					</th>
+				</template>
+			</tr>
+		</thead>
+		<tbody>
+			<template
+				lwc:if={returnedRecords}
+				for:each={returnedRecords}
+				for:item="record">
+				<tr key={record.key}>
+					<template
+						lwc:if={record.details}
+						for:each={record.details}
+						for:item="field">
+						<td
+							data-label={field.label}
+							key={field.label}>
+							<div
+								lwc:if={field.isNameField}
+								class="slds-truncate field-label table-data disp-flex align-items-c"
+								title={field.value}>
+								<a>
+									<c-formatted-field
+										onclick={handleClickRecordName}
+										data-key={record.key}
+										field={field}></c-formatted-field>
+								</a>
+							</div>
+							<div
+								lwc:else
+								class="slds-truncate field-label table-data disp-flex align-items-c"
+								title={field.value}>
+								<c-formatted-field field={field}></c-formatted-field>
+							</div>
+						</td>
+					</template>
+				</tr>
+			</template>
+		</tbody>
+	</table>
+</template>

@@ -1,0 +1,37 @@
+<aura:component
+	implements="forceCommunity:availableForAllPageTypes"
+	access="global">
+
+	<aura:attribute
+		name="header"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="headerColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="description"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="subheaderColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="homeTile"
+		type="boolean"
+		access="global" />
+	<aura:attribute
+		name="config"
+		type="Object" />
+
+	<aura:handler
+		name="init"
+		value="{!this}"
+		action="{!c.doInit}" />
+
+	<aura:if isTrue="{!v.homeTile}">
+		<c:etplHomePage config="{!v.config}"></c:etplHomePage>
+	</aura:if>
+</aura:component>

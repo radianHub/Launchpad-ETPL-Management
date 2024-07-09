@@ -1,0 +1,38 @@
+<template>
+	<lightning-spinner
+		lwc:if={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<div lwc:if={recordsToDisplay}>
+		<c-record-data-table
+			lwc:if={isDesktop}
+			class="data-table"
+			object-api-name={objectApiName}
+			field-set-fields={fields}
+			records={recordsToDisplay}
+			name-field-redirect-path={nameFieldRedirectPath}></c-record-data-table>
+		<lightning-layout multiple-rows="true">
+			<template
+				lwc:if={isMobile}
+				for:each={recordsToDisplay}
+				for:item="record">
+				<lightning-layout-item
+					key={record.Id}
+					size="12">
+					<c-record-tile
+						record={record}
+						fields={fields}
+						config={config}
+						object-api-name={objectApiName}
+						name-field-redirect-path={nameFieldRedirectPath}></c-record-tile>
+				</lightning-layout-item>
+			</template>
+		</lightning-layout>
+	</div>
+	<div
+		lwc:else
+		class="slds-p-around_medium slds-align_absolute-center">
+		<span class="no-records slds-align_absolute-center">{config.noRecordsMessage}</span>
+	</div>
+</template>

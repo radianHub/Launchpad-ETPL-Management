@@ -1,0 +1,37 @@
+<template>
+	<lightning-layout
+		vertical-align="center"
+		multiple-rows="true"
+		class="slds-text-align_left">
+		<lightning-layout-item
+			size="12"
+			class="slds-p-vertical_medium slds-p-horizontal_large tile-title">
+			<a
+				onclick={handleClickRecordName}
+				class="slds-text-heading_medium text-bold"
+				>{title}</a
+			>
+		</lightning-layout-item>
+		<template
+			if:true={details}
+			for:each={details}
+			for:item="item">
+			<lightning-layout-item
+				size="6"
+				key={item.label}
+				if:true={item.value}
+				class="slds-p-vertical_medium slds-p-left_large">
+				<span class="tile-label">{item.label}</span>
+			</lightning-layout-item>
+			<lightning-layout-item
+				size="6"
+				key={item.label}
+				if:true={item.value}
+				class="slds-p-vertical_medium slds-p-right_large">
+				<span class="tile-field">
+					<c-formatted-field field={item}></c-formatted-field>
+				</span>
+			</lightning-layout-item>
+		</template>
+	</lightning-layout>
+</template>
