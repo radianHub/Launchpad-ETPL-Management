@@ -1,0 +1,70 @@
+.filter {
+	background-color: #ebebeb;
+}
+
+:host {
+	--slds-c-button-line-height: 1rem;
+}
+
+.button-icon-pair {
+	display: flex;
+	flex-direction: column-reverse;
+	align-self: end;
+}
+
+.flex-jc-sb {
+	justify-content: space-between;
+}
+
+.disp-flex {
+	display: flex;
+}
+
+.flex-ai-c {
+	align-items: center;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
+}
+.disp-flex.flex-gap-15 {
+	gap: 15px;
+}
+
+.padding-bottom-5 {
+	padding-bottom: 2px;
+}
+
+.align-self-end {
+	align-self: end;
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+
+	.padding-bottom-15 {
+		padding-bottom: 15px;
+	}
+	.clamp {
+		width: clamp(50px, 100%, 350px);
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	/* For tablets and desktop: */
+
+	.flex-gap-30 {
+		gap: 30px;
+	}
+
+	.padding-bottom-5 {
+		padding-bottom: 5px;
+	}
+
+	.filter-input-min-width {
+		min-width: 250px;
+	}
+	.clamp {
+		width: clamp(100px, 80%, 200px);
+	}
+}

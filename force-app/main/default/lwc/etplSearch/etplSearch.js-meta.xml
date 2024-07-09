@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>ETPL Search</masterLabel>
+    <description>Used to search the Eligible Training Provider List.</description>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+				name="header"
+				label="Header"
+				type="String"
+				default="Search Eligible Training Providers"
+			/> 
+            <property
+				name="headerColor"
+				label="Header Color" 
+				type="Color"
+				default="rgb(84, 105, 141)"
+			/> 
+            <property
+				name="description"
+				label="Description"
+				type="String"
+				default="You can search for Eligible Training Providers by..."
+			/> 
+            <property
+				name="filterHeader"
+				label="Filter Header"
+				type="String"
+				default="Search Programs"
+			/> 
+            <property
+				name="filterSectionHelpText"
+				label="Filter Section Help Text"
+				type="String"
+				default="Focus on narrowing down the right Training Programs for you, then click Search Programs to see results."
+			/> 
+            <property
+				name="primaryFilterFieldSetApiName"
+				label="Primary Filter Fields Field Set API Name"
+				type="String"
+				default="LaunchpadCo__ETPL_Search"
+			/> 
+            <property
+				name="searchInputLabel"
+				label="Search Input Label"
+				type="String"
+				default="Enter search terms here..."
+			/> 
+            <property
+				name="searchBtnLabel"
+				label="Search Button Label"
+				type="String"
+				default="Search Programs"
+			/> 
+            <property
+				name="clearFilterLabel"
+				label="Clear Filter Button Label"
+				type="String"
+				default="Clear Filters"
+			/> 
+            <property
+				name="enableAdvancedFilters"
+				label="Enable Advanced Filters"
+				type="Boolean"
+				default="true"
+			/> 
+			<property
+				name="advancedFilterFieldSetApiName"
+				label="Filter Fields Field Set API Name"
+				type="String"
+				default="LaunchpadCo__ETPL_Search"
+			/> 
+			<property
+				name="noRecordsMessage"
+				label="Message When no records are available to display"
+				type="String"
+				default="There are no Training Programs that match your search criteria."
+			/> 
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
