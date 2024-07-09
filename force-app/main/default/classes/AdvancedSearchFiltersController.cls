@@ -93,6 +93,7 @@ public with sharing class AdvancedSearchFiltersController {
 		filterOptionsMapKeySet.remove('wage'); // We will use the keyword filter in the SOSL search rather than the SOQL query.
 		filterOptionsMapKeySet.remove('cityOrZipCode'); // We will use the keyword filter in the SOSL search rather than the SOQL query.
 
+
 		for (String fieldApiName : filterOptionsMapKeySet) {
 			Schema.DescribeFieldResult fieldResult = objFields?.get(fieldApiName)?.getDescribe();
 			if (fieldResult == null) {
@@ -103,11 +104,18 @@ public with sharing class AdvancedSearchFiltersController {
 			// Note that operators are hardcoded for Picklist and Multipicklist since they will ALWAYS be the same
 			Schema.DisplayType type = fieldResult.getType();
 
-			if (searchValues.size() == 1) {
-				continue;
-			} else {
-				String whereClause = generateWhereClauseFilter(type, searchValues, fieldApiName);
-				whereClauseFiltersList.add(whereClause);
+			switch on type {
+				when REFERENCE {
+					throw new DisplayType.DisplayTypeException('Reference fields are not currently supported. Please remove any Master-Detail or Lookup fields from the appropriate field from the LaunchpadCo__Training_Program__c object.' );
+				}
+				when else {
+					if (searchValues.size() == 1) {
+						continue;
+					} else {
+						String whereClause = generateWhereClauseFilter(type, searchValues, fieldApiName);
+						whereClauseFiltersList.add(whereClause);
+					}
+				}
 			}
 		}
 		return whereClauseFiltersList;
@@ -152,6 +160,7 @@ public with sharing class AdvancedSearchFiltersController {
 				return fieldApiName + ' IN (\'' + String.join(escapedSearchValues, '\',\'') + '\')';
 			}
 			when else {
+				System.debug('REFERENCE NOT SUPPORTED');
 				throw new DisplayType.DisplayTypeException(type + ' is not a supported display type.');
 			}
 		}
