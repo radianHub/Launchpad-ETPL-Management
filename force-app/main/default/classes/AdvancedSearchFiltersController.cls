@@ -105,10 +105,7 @@ public with sharing class AdvancedSearchFiltersController {
 			Schema.DisplayType type = fieldResult.getType();
 
 			switch on type {
-				when REFERENCE {
-					throw new DisplayType.DisplayTypeException('Reference fields are not currently supported. Please remove any Master-Detail or Lookup fields from the appropriate field from the LaunchpadCo__Training_Program__c object.' );
-				}
-				when else {
+				when BOOLEAN, CURRENCY, DATE, DATETIME, DOUBLE, INTEGER, PERCENT, PHONE, TIME, EMAIL, ENCRYPTEDSTRING, ID, STRING, TEXTAREA, URL,MULTIPICKLIST, PICKLIST {
 					if (searchValues.size() == 1) {
 						continue;
 					} else {
@@ -116,8 +113,13 @@ public with sharing class AdvancedSearchFiltersController {
 						whereClauseFiltersList.add(whereClause);
 					}
 				}
+				when else {
+					throw new DisplayType.DisplayTypeException('Fields of type \'' + type +  '\' are not currently supported. Please remove any unsupported fields from the appropriate field from the LaunchpadCo__Training_Program__c object.' );
+
+				}
 			}
 		}
+
 		return whereClauseFiltersList;
 	}
 
