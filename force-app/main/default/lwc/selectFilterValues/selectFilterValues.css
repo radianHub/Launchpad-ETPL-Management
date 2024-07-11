@@ -1,0 +1,26 @@
+.header-title {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: flex-start;
+}
+
+lightning-modal-header {
+	color: rgb(84, 105, 141);
+	--slds-c-modal-heading-font-size: 26px;
+	--slds-c-modal-heading-font-weight: 900;
+	--slds-c-modal-sizing-border: 0px;
+}
+
+.option-checkbox {
+	display: inline-flex;
+	width: 100%;
+}
+
+.option-label {
+	margin: 5px;
+	width: calc(100% - 40px);
+}

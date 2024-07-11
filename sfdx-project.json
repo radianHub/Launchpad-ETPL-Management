@@ -2,11 +2,27 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "package": "Launchpad ETPL Management",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": true,
+      "versionDescription": "Launchpad's Eligible Training Provider portal.",
+      "dependencies": [
+        {
+          "package": "04t4w000000tPyDAAU"
+        },
+        {
+          "package": "04tJ2000000kZkmIAE"
+        }
+      ]
     }
   ],
-  "name": "dx-empty",
-  "namespace": "",
+  "name": "Launchpad ETPL Management",
+  "namespace": "LaunchpadCo",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "55.0"
+  "sourceApiVersion": "56.0",
+  "packageAliases": {
+    "Launchpad ETPL Management": "0HoNw0000005oiXKAQ",
+    "Launchpad ETPL Management@1.3000.0": "04tNw0000004LfNIAU"
+  }
 }

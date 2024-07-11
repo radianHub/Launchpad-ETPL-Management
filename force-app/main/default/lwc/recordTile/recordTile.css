@@ -1,0 +1,13 @@
+.tile-title {
+	background-color: #e5e5e5;
+}
+
+.tile-label {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.tile-field {
+	font-size: 1rem;
+	color: #747474;
+}
